@@ -1,22 +1,23 @@
 import React, {useReducer} from 'react'
-import counterReducer, {initialState} from './reducer/counterReducer';
+import counterReducer, {initialState} from '../../component/counter/reducer/counterReducer';
 import {useDispatch, useSelector} from 'react-redux';
+import {decrement, increment, reset} from './counterSlice';
 
 
 
 
 const Counter = () => {
     //const [state, dispatch] = useReducer(counterReducer, initialState);
-    const count = useSelector((state)=>state.count);
+    const {count} = useSelector((state)=>state.counter);
     const dispatch = useDispatch();
     const handleIncrement = ()=>{
-        dispatch({type:'increment'});
+        dispatch(increment());
     }
     const handleDecrement = ()=>{
-        dispatch({type:'decrement'});
+        dispatch(decrement());
     }
     const handleReset = ()=>{
-        dispatch({type:'reset'});
+        dispatch(reset());
     }
   return (
     <div>
